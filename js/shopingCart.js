@@ -1,4 +1,10 @@
+// set element value by if:
+function setElementValueByID(elementID , value){
+    const element = document.getElementById(elementID);
+    element.innerText= value;
+}
 
+// update product amount:
 function updateElementAmount(isIncrese, inputArea){
     const inputField = document.getElementById(inputArea);
     const inputValue = parseInt(inputField.value);
@@ -21,11 +27,28 @@ function updateElementAmount(isIncrese, inputArea){
     return newInputValue;
 }
 
+// update product price depending on the amount
 function updatePrice(newInputValue , singleElementPrice , displayField){
 
     let price = newInputValue * singleElementPrice;
     document.getElementById(displayField).innerText = price;
 
+}
+
+// set totall price with tax
+function setTotall(){
+    const phoneTotalPrice = parseInt(document.getElementById("phone-price").innerText);
+    const coverTotalPrice = parseInt(document.getElementById("cover-price").innerText);
+
+    const subTotal = phoneTotalPrice + coverTotalPrice;
+    setElementValueByID("subTotal",subTotal);
+
+    const taxString = (subTotal * 0.1).toFixed(2);
+    const tax = parseFloat(taxString);
+    setElementValueByID("tax",tax);
+
+    const finalTotal = subTotal + tax;
+    setElementValueByID("total",finalTotal);
 }
 
 
@@ -35,6 +58,8 @@ document.getElementById("phone-Plus").addEventListener("click" , function(){
     let newInputValue=  updateElementAmount(true, "phone-input");
     
     updatePrice(newInputValue, 1219, "phone-price" );
+
+    setTotall();
 
 });
 
@@ -46,6 +71,7 @@ document.getElementById("phone-Minus").addEventListener("click" , function(){
     
     updatePrice(newInputValue, 1219, "phone-price" );
 
+    setTotall();
 });
 
 
@@ -57,6 +83,7 @@ document.getElementById("phone-cover-plus").addEventListener("click" , function(
         
     updatePrice(newInputValue, 59, "cover-price" );
 
+    setTotall();
 });
 
 // decrement the phone cover:
@@ -65,6 +92,7 @@ document.getElementById("phone-cover-minus").addEventListener("click" , function
     let newInputValue=  updateElementAmount(false, "phone-cover-input");
     
     updatePrice(newInputValue, 59, "cover-price" );
-    
+
+    setTotall();
 });
 
