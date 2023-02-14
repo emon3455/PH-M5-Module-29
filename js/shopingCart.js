@@ -21,14 +21,20 @@ function updateElementAmount(isIncrese, inputArea){
     return newInputValue;
 }
 
+function updatePrice(newInputValue , singleElementPrice , displayField){
+
+    let price = newInputValue * singleElementPrice;
+    document.getElementById(displayField).innerText = price;
+
+}
+
 
 // increment the phone:
 document.getElementById("phone-Plus").addEventListener("click" , function(){
 
     let newInputValue=  updateElementAmount(true, "phone-input");
     
-    let price = newInputValue * 1219;
-    document.getElementById("phone-price").innerText = price;
+    updatePrice(newInputValue, 1219, "phone-price" );
 
 });
 
@@ -37,9 +43,8 @@ document.getElementById("phone-Plus").addEventListener("click" , function(){
 document.getElementById("phone-Minus").addEventListener("click" , function(){
 
     let newInputValue=  updateElementAmount(false, "phone-input");
-
-    let price = newInputValue * 1219;
-    document.getElementById("phone-price").innerText = price;
+    
+    updatePrice(newInputValue, 1219, "phone-price" );
 
 });
 
@@ -49,8 +54,8 @@ document.getElementById("phone-cover-plus").addEventListener("click" , function(
 
     let newInputValue=  updateElementAmount(true, "phone-cover-input");
 
-    let price = newInputValue * 59;
-    document.getElementById("cover-price").innerText = price;
+        
+    updatePrice(newInputValue, 59, "cover-price" );
 
 });
 
@@ -59,8 +64,7 @@ document.getElementById("phone-cover-minus").addEventListener("click" , function
 
     let newInputValue=  updateElementAmount(false, "phone-cover-input");
     
-    let price = newInputValue * 59;
-    document.getElementById("cover-price").innerText = price;
-
+    updatePrice(newInputValue, 59, "cover-price" );
+    
 });
 
