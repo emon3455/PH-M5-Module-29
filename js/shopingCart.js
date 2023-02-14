@@ -1,4 +1,18 @@
-// set element value by if:
+// remove phone:
+document.getElementById("remove-phone").addEventListener("click" , function(event){
+    
+    event.target.parentNode.parentNode.parentNode.style.display="none";
+    
+});
+
+// remove cover:
+document.getElementById("remove-cover").addEventListener("click" , function(event){
+
+    event.target.parentNode.parentNode.parentNode.style.display="none";
+    
+});
+
+// set element value by id:
 function setElementValueByID(elementID , value){
     const element = document.getElementById(elementID);
     element.innerText= value;
@@ -95,4 +109,3 @@ document.getElementById("phone-cover-minus").addEventListener("click" , function
 
     setTotall();
 });
-
