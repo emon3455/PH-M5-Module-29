@@ -49,3 +49,37 @@ document.getElementById("calculator").addEventListener("click" , function(event)
         }
 
 });
+
+document.getElementById("submit-pin").addEventListener("click" , function(){
+
+    const generatedPins = document.getElementById("pin-display").value;
+    const typedPin = document.getElementById("calc-input").value;
+
+    if( generatedPins === typedPin){
+        document.getElementById("pin-Matched").style.display="block";
+        document.getElementById("pin-missmatched").style.display="none";
+
+        document.getElementById("pin-display").value = "";
+        document.getElementById("calc-input").value = "";
+    }
+    else{
+        document.getElementById("pin-Matched").style.display="none";
+        document.getElementById("pin-missmatched").style.display="block";
+
+        const tryRemain = document.getElementById("try");
+        let count = document.getElementById("try").innerText;
+
+        if(count <= 0){
+            document.getElementById("pin-display").value = "";
+            document.getElementById("calc-input").value = "";
+            tryRemain.innerText="0";
+            return;
+        }
+        else{
+            count--;
+            tryRemain.innerText= count;
+        }
+
+    }
+
+});
